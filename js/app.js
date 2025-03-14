@@ -1,4 +1,5 @@
 let lista_Teste = chamarLista();
+let ativador = false
 
 function chamarLista(){
     let lista_Teste = [];
@@ -8,10 +9,18 @@ function adicionar(){
     let lista = document.querySelector(".friends__container");
     let amigo = document.getElementById("nome-amigo").value;
     
-    amigo = ` ${amigo}`;
-    lista_Teste.push(amigo);
+    if(amigo == ""){
+        alert("Adicione um nome de um amigo!")
+    }else{
+        amigo = ` ${amigo}`;
+        if(lista_Teste.includes(amigo)){
+            alert("Amigo já incluido ou invalido!")
+        }else{
+            lista_Teste.push(amigo);
+            lista.innerHTML = `<p id="lista-amigos">${lista_Teste}</p>`;
+        }
+    }
 
-    lista.innerHTML = `<p id="lista-amigos">${lista_Teste}</p>`;
 }
 
 function reiniciar(){
@@ -19,19 +28,24 @@ function reiniciar(){
     document.querySelector(".prizeDraw__container").innerHTML = `<p id="lista-sorteio"></p>`
     document.getElementById("nome-amigo").value = "";
     lista_Teste = [];
+    ativador = false
 }
 
 function sortear(){
-    embaralhamento();
-    let container = document.querySelector(".prizeDraw__container");
-    for(let i = 0; i < lista_Teste.length; i++){
-        if(i == lista_Teste.length - 1){
-            container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[0]}</p>`
-        }else{
-            container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[i + 1]}</p>`
+    if(ativador == false){
+        ativadorSorteio();
+        embaralhamento();
+        let container = document.querySelector(".prizeDraw__container");
+        for(let i = 0; i < lista_Teste.length; i++){
+            if(i == lista_Teste.length - 1){
+                container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[0]}</p>`
+            }else{
+                container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[i + 1]}</p>`
+            }
         }
+    }else{
+        alert("Reinicie o jogo para sortear novos nomes!")
     }
-    
 }
 
 function embaralhamento(){
@@ -41,4 +55,7 @@ function embaralhamento(){
         [lista_Teste[indice - 1], lista_Teste[indiceAleatorio]] = [lista_Teste[indiceAleatorio], lista_Teste[indice - 1]];
     }
     
+}
+function ativadorSorteio(){
+    ativador = true
 }
