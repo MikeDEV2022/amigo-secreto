@@ -13,7 +13,7 @@ function adicionar(){
         alert("Adicione um nome de um amigo!")
     }else{
         amigo = ` ${amigo}`;
-        if(lista_Teste.includes(amigo)){
+        if(lista_Teste.includes(amigo) || amigo == amigo.toUpperCase()){
             alert("Amigo já incluido ou invalido!")
         }else{
             lista_Teste.push(amigo);
