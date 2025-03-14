@@ -1,4 +1,5 @@
 let lista_Teste = chamarLista();
+
 function chamarLista(){
     let lista_Teste = [];
     return lista_Teste;
@@ -15,6 +16,13 @@ function adicionar(){
 
 function reiniciar(){
     document.querySelector(".friends__container").innerHTML = `<p id="lista-amigos"></p>`;
+    document.querySelector(".prizeDraw__container").innerHTML = `<p id="lista-sorteio"></p>`
     document.getElementById("nome-amigo").value = "";
     lista_Teste = [];
+}
+
+function sortear(){
+    let lista_Sorteio = document.querySelector(".prizeDraw__container");
+    let sorteado;
+    let nomesSorteado = [];
 }
