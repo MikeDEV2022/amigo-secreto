@@ -22,13 +22,23 @@ function reiniciar(){
 }
 
 function sortear(){
-    chamaSorteador();
+    embaralhamento();
+    let container = document.querySelector(".prizeDraw__container");
+    for(let i = 0; i < lista_Teste.length; i++){
+        if(i == lista_Teste.length - 1){
+            container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[0]}</p>`
+        }else{
+            container.innerHTML += `<p id="lista-sorteio">${lista_Teste[i]} ➞ ${lista_Teste[i + 1]}</p>`
+        }
+    }
+    
 }
 
-function chamaSorteador(){
+function embaralhamento(){
     for(let indice = lista_Teste.length; indice; indice--){
         const indiceAleatorio = Math.floor(Math.random() * indice);
 
         [lista_Teste[indice - 1], lista_Teste[indiceAleatorio]] = [lista_Teste[indiceAleatorio], lista_Teste[indice - 1]];
     }
+    
 }
