@@ -22,7 +22,13 @@ function reiniciar(){
 }
 
 function sortear(){
-    let lista_Sorteio = document.querySelector(".prizeDraw__container");
-    let sorteado;
-    let nomesSorteado = [];
+    chamaSorteador();
+}
+
+function chamaSorteador(){
+    for(let indice = lista_Teste.length; indice; indice--){
+        const indiceAleatorio = Math.floor(Math.random() * indice);
+
+        [lista_Teste[indice - 1], lista_Teste[indiceAleatorio]] = [lista_Teste[indiceAleatorio], lista_Teste[indice - 1]];
+    }
 }
